@@ -1,18 +1,21 @@
+import { User } from '@prisma/client';
 import { GetStaticProps } from 'next';
 import { getUsers } from '../services/users';
 
-export default function Home() {
-  function fetchUsers() {
-    fetch('/api/users')
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  }
-
-  return <button onClick={fetchUsers}>Buscar</button>;
+export default function Home({ users }: { users: User[] }) {
+  return (
+    <ul>
+      {users.map((user) => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const users = await getUsers();
+
+  console.log(users);
 
   return {
     props: { users },
