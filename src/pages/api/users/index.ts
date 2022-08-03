@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getUsers } from '../../../libs/users';
+import { getUsers } from '../../../services/users';
 
 const prisma = new PrismaClient();
 

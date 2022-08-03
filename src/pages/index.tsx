@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import { getUsers } from '../libs/users';
+import { getUsers } from '../services/users';
 
 export default function Home() {
   function fetchUsers() {
